@@ -1,0 +1,35 @@
+
+<div class="container-fluid">
+    <h2>Employee Form</h2>
+
+    <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- {{ userModel | json}} -->
+      <div class="form-group">
+        <label>Employee Name</label>
+        <input type="text" required [class.is-invalid]="name.invalid && name.touched" class="form-control " name="name" #name="ngModel" required [(ngModel)]="userModel.name">
+      </div>
+
+      <div class="form-group">
+        <label>Employee Address</label> 
+        <input type="text" required [class.is-invalid]="address.invalid && name.touched" class="form-control" name="address" #address="ngModel" required [(ngModel)]="userModel.address">
+      </div>
+  
+      <div class="form-group">
+        <label>Employee Email</label>
+        <input type="email"  [class.is-invalid]="email.invalid && name.touched" class="form-control" name="email" #email="ngModel" required [(ngModel)]="userModel.email">
+      </div>
+  
+      <div class="form-group">
+        <label>Employee Phone</label><br>
+        <input type="tel"  #phone="ngModel" [class.is-invalid]="phone.invalid && name.touched" class="form-control" name="phone" pattern="^\d{10}$" [(ngModel)]="userModel.phone">
+      </div>
+
+      <div class="form-group">
+        <label>Employee DOB</label>
+        <input type="date" required #dob="ngModel" [class.is-invalid]="dob.invalid && name.touched" class="form-control" name="dob" [(ngModel)]="userModel.dob">
+      </div>
+  
+      <br><button class="btn btn-primary" [disabled]="userForm.form.invalid" type="submit">Submit form</button>
+  
+    </form>
+  </div>
